@@ -16,6 +16,4 @@
 //});
 Route::resource('/', 'MainGitController');
 Route::get('/store', 'MainGitController@store');
-//Route::get('/ajax', 'MainGitController@ajaxCall');
 Route::post('/postajax','MainGitController@ajaxCall');
-Route::post('/searchWord' , 'MainGitController@search');
