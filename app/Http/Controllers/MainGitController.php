@@ -79,29 +79,6 @@ class MainGitController extends Controller
 
     }
 
-    public function myMethod()
-    {
-        $access_token = session('my_access_token');
-        $userAgentHeader = 'User-Agent: demo';
-        $authHeader = "Authorization: token ".$access_token;
-        if($access_token == '')
-        {
-            dd('Invalid access token');
-        }
-        $postFields = array('q' => 'Lip4evskij');
-        $url = 'https://api.github.com/search/repositories?q=Wezom+in:name+user:Lip4evskij';
-        $connect_repos = curl_init();
-        curl_setopt( $connect_repos, CURLOPT_CUSTOMREQUEST, 'GET' );
-        curl_setopt($connect_repos, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($connect_repos, CURLOPT_POSTFIELDS, $postFields);
-        curl_setopt($connect_repos, CURLOPT_HTTPHEADER, array('Accept: application/json', $authHeader,$userAgentHeader));
-        curl_setopt($connect_repos, CURLOPT_URL, $url);
-        $data = json_decode( curl_exec($connect_repos) ); // получаем и декодируем данные из JSON
-        curl_close($connect_repos);
-        dd($data);
-
-    }
-
 
     /**
      * Store a newly created resource in storage.
